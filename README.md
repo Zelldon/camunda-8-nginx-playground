@@ -8,6 +8,7 @@ Used resources:
  * https://kubernetes.github.io/ingress-nginx/examples/rewrite/
  * https://docs.k0sproject.io/v1.22.2+k0s.1/examples/nginx-ingress/#:~:text=If%20you%20don't%20yet%20have%20any%20backend%20service%20configured,server)%20to%20verify%20your%20Ingress.
  * https://kubernetes.github.io/ingress-nginx/deploy/
+ * https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-helm/
 
 ## Add ngnix helm repo
 
