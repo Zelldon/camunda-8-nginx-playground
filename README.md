@@ -2,6 +2,13 @@
 
 In this repo I what to play around with ngnix and how we can set it up with the Camunda 8 Platform Helm charts. It is far from complete and more like an POC.
 
+Used resources:
+
+ * https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html
+ * https://kubernetes.github.io/ingress-nginx/examples/rewrite/
+ * https://docs.k0sproject.io/v1.22.2+k0s.1/examples/nginx-ingress/#:~:text=If%20you%20don't%20yet%20have%20any%20backend%20service%20configured,server)%20to%20verify%20your%20Ingress.
+ * https://kubernetes.github.io/ingress-nginx/deploy/
+
 ## Add ngnix helm repo
 
 
