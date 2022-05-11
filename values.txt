@@ -1,0 +1,72 @@
+# helm install ccsm camunda-cloud/camunda-platform -f values.yaml
+global:
+  identity:
+    auth:
+      enabled: true
+      publicIssuerUrl: "http://keycloak.demo.io/auth/realms/camunda-platform"
+      operate:
+        redirectUrl: "http://operate.demo.io"
+      tasklist:
+        redirectUrl: "http://tasklist.demo.io"
+      optimize:
+        redirectUrl: "http://optimize.demo.io"
+
+zeebe: 
+  clusterSize: 1
+  partitionCount: 1
+  replicationFactor: 1
+  pvcSize: 10Gi
+
+zeebe-gateway:
+  replicas: 1
+
+elasticsearch:
+  imageTag: 7.16.1
+  replicas: 1
+  minimumMasterNodes: 1
+  # Allow no backup for single node setups
+  clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
+
+operate:
+  ingress: 
+    enabled: true
+    host: "operate.demo.io"
+
+identity:
+  enabled: true
+  ingress: 
+    enabled: false
+    host: "identity.demo.io"
+  keycloak:
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hostname: "keycloak.demo.io"
+    auth:
+      adminUser: admin
+      adminPassword: admin
+  env: 
+   - name: IDENTITY_AUTH_PROVIDER_ISSUER_URL
+     value: "http://keycloak.demo.io/auth/realms/camunda-platform"
+   - name: IDENTITY_URL
+     value: "http://identity.demo.io"
+
+tasklist:
+  enabled: true
+  ingress: 
+    enabled: true
+    host: "tasklist.demo.io"
+
+optimize:
+  enabled: true
+  ingress: 
+    enabled: true
+    host: "optimize.demo.io"
+
+prometheusServiceMonitor:
+  enabled: true
+  labels:
+    release: prometheus
+  scrapeInterval: 10s
+
+# helm install prometheus prometheus-community/kube-prometheus-stack --set prometheus-node-exporter.hostRootFsMount.enabled=false --set grafana.defaultDashboardsTimezone=browser
