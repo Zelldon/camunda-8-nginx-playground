@@ -127,3 +127,11 @@ $ curl -Lv 35.205.224.118:80/api/login
 ```
 
 TODO: I haven't found a good way to expose it and to make it accessible via Browser.
+
+## Further read
+
+Reading the following resources seem to be helpful.
+
+* https://cloud.google.com/community/tutorials/nginx-ingress-gke
+* https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer
+  * https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer#optional_serving_multiple_applications_on_a_load_balancer
